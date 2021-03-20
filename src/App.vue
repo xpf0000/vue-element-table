@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-    <BaseTable></BaseTable>
+    <BaseTable
+      theader=""
+      querys=""
+      api-list=""
+      api-search=""
+      api-delete=""
+      show-export=""
+      show-choose=""
+      show-page=""
+      show-sum=""
+      add-and-edit=""
+      single-choose=""
+    ></BaseTable>
   </div>
 </template>
 
 <script>
-  import Vue from 'vue'
-  import { BaseTable } from '/dist'
+  // import Vue from 'vue'
+  import BaseTable from '@/components/BaseTable'
   // import Base from '/dist/index'
   // Vue.use(Base)
   // console.log('BBB: ', Base)
