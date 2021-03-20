@@ -7,7 +7,7 @@
       :on-search-submit="onSearchSubmit"
     ></SearchBox>
     <el-row>
-      <el-col :span="8" class="tool-left">
+      <el-col :span="8" class="common-list-tool-left">
         <slot name="tool" :data="selectRows"></slot>
         <el-button
           v-if="addAndEdit"
@@ -145,9 +145,9 @@
    * @author 徐鹏飞
    * @desc 通用列表
    */
-  import CommonExportBar from '@/components/TableExportBar'
-  import SearchBox from '@/components/TableSearchBox'
-  import SwitchVal from '@/components/SwitchVal'
+  import CommonExportBar from '../TableExportBar'
+  import SearchBox from '../TableSearchBox'
+  import SwitchVal from '../SwitchVal'
   export default {
     components: { SearchBox, CommonExportBar, SwitchVal },
     props: {
@@ -332,6 +332,9 @@
   }
 </script>
 <style>
+  .common-list-tool-left {
+    min-height: 32px;
+  }
   .common-list-pagin {
     text-align: center;
     margin-top: 20px;

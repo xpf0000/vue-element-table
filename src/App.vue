@@ -18,7 +18,7 @@
 
 <script>
   // import Vue from 'vue'
-  import BaseTable from '@/components/BaseTable'
+  import { BaseTable } from '/dist'
   // import Base from '/dist/index'
   // Vue.use(Base)
   // console.log('BBB: ', Base)

@@ -164,7 +164,9 @@
       },
       excel(all = false) {
         require.ensure([], () => {
-          const { export_json_to_excel } = require('@/lib/excel/Export2Excel')
+          const {
+            export_json_to_excel
+          } = require('../../lib/excel/Export2Excel')
           let headers = this.theader.filter((item) => {
             return item.show && item.prop
           })
@@ -190,7 +192,7 @@
       },
       csv(all = false) {
         require.ensure([], () => {
-          const { export_json_to_csv } = require('@/lib/excel/Export2CSV')
+          const { export_json_to_csv } = require('../../lib/excel/Export2CSV')
           let headers = this.theader.filter((item) => {
             return item.show && item.prop
           })
@@ -218,7 +220,7 @@
       },
       json(all = false) {
         require.ensure([], () => {
-          const { export_json_to_json } = require('@/lib/excel/Export2JSON')
+          const { export_json_to_json } = require('../../lib/excel/Export2JSON')
           let headers = this.theader.filter((item) => {
             return item.show && item.prop
           })
