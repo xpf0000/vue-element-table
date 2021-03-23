@@ -204,7 +204,7 @@
       },
       // 添加编辑回调
       addAndEdit: {
-        type: [Function],
+        type: [Promise, Function],
         default: function () {
           return null
         }

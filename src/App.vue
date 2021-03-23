@@ -10,18 +10,14 @@
       :show-choose="true"
       :show-page="true"
       :show-sum="true"
-      :add-and-edit="null"
       :single-choose="true"
+      :add-and-edit="edit"
     ></BaseTable>
   </div>
 </template>
 
 <script>
-  // import Vue from 'vue'
-  import { BaseTable } from '/dist'
-  // import Base from '/dist/index'
-  // Vue.use(Base)
-  // console.log('BBB: ', Base)
+  import { BaseTable as BaseTable } from './index'
   export default {
     name: 'App',
     components: { BaseTable },
@@ -141,7 +137,8 @@
       this.$set(this.query, 'c', 3)
     },
     methods: {
-      show() {}
+      show() {},
+      edit() {}
     }
   }
 </script>
