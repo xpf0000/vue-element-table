@@ -112,6 +112,11 @@
                 :api="item.api"
               ></SwitchVal>
             </template>
+            <template v-else-if="item.type === 'index'">
+              {{
+                scope.$index + 1 + (queryForm.pageNo - 1) * queryForm.pageSize
+              }}
+            </template>
           </template>
           <template
             v-else-if="item.prop && item.type === 'image'"
