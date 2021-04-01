@@ -221,16 +221,16 @@
     .search-item {
       display: flex;
       align-items: center;
-      width: 25%;
+      width: 20%;
       min-width: 350px;
       padding-right: 40px;
       margin-bottom: 20px;
 
       .label {
         flex-shrink: 0;
-        width: 35%;
-        padding-right: 40px;
-        text-align: right;
+        width: 30%;
+        padding-right: 20px;
+        text-align: left;
       }
 
       .split {

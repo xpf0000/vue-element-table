@@ -4,7 +4,7 @@
       :theader="theader"
       :querys="query"
       :api-list="apiList"
-      :api-search="null"
+      :api-search="apiSearch"
       :api-delete="null"
       :show-export="true"
       :show-choose="true"
@@ -127,6 +127,64 @@
               })
             }
             resolve({ code: 0, data: data })
+          })
+        },
+        apiSearch: function (query) {
+          return new Promise((resolve) => {
+            resolve({
+              code: 0,
+              data: {
+                'o-type': {
+                  label: '\u8ba2\u5355\u7c7b\u578b',
+                  type: 'select',
+                  operate: '=',
+                  values: [
+                    { label: '\u5168\u90e8', value: '' },
+                    {
+                      label: '\u8d2d\u4e70\u5e94\u7528\u5957\u9910',
+                      value: '1'
+                    },
+                    {
+                      label: '\u5e94\u7528\u5957\u9910\u7eed\u8d39',
+                      value: '2'
+                    },
+                    {
+                      label: '\u5e94\u7528\u5957\u9910\u5347\u7ea7',
+                      value: '3'
+                    },
+                    {
+                      label: '\u4ee3\u7406\u5546\u5145\u503c\u8ba2\u5355',
+                      value: '4'
+                    }
+                  ],
+                  value: ''
+                },
+                'u-username': {
+                  label: '\u7528\u6237\u540d',
+                  type: 'text',
+                  operate: 'like',
+                  value: ''
+                },
+                'o-orderno': {
+                  label: '\u8ba2\u5355\u53f7',
+                  type: 'text',
+                  operate: 'like',
+                  value: ''
+                },
+                'w-name': {
+                  label: '\u5e94\u7528\u540d\u79f0',
+                  type: 'text',
+                  operate: 'like',
+                  value: ''
+                },
+                'm-meal_name': {
+                  label: '\u5957\u9910\u540d\u79f0',
+                  type: 'text',
+                  operate: 'like',
+                  value: ''
+                }
+              }
+            })
           })
         }
       }
