@@ -192,7 +192,7 @@
             if (data[k].value.e && data[k].value.e > 10000000000) {
               data[k].value.e = data[k].value.e / 1000
             }
-            if (data[k].type === 'date') {
+            if (data[k].type === 'date' && data[k].value.s) {
               data[k].value.e = data[k].value.s + 86399
             }
           }
