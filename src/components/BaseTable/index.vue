@@ -11,6 +11,7 @@
         <slot name="tool" :data="selectRows"></slot>
         <el-button
           v-if="addAndEdit"
+          v-permissions="addPermission"
           icon="el-icon-plus"
           type="primary"
           @click="handleEdit(null)"
@@ -19,6 +20,7 @@
         </el-button>
         <el-button
           v-if="showChoose && apiDelete"
+          v-permissions="delPermission"
           :disabled="selectRows.length === 0"
           icon="el-icon-delete"
           type="danger"
@@ -84,6 +86,7 @@
                     ? item.edit(scope.row) !== false
                     : item.edit !== false)
                 "
+                v-permissions="editPermission"
                 type="text"
                 @click="handleEdit(scope.row)"
               >
@@ -96,6 +99,7 @@
                     ? item.del(scope.row) !== false
                     : item.del !== false)
                 "
+                v-permissions="delPermission"
                 type="text"
                 @click="handleDelete(scope.row)"
               >
@@ -204,10 +208,25 @@
       },
       // 添加编辑回调
       addAndEdit: {
-        type: [Promise, Function],
+        type: [Promise, Function, Object],
         default: function () {
           return null
         }
+      },
+      // 添加权限
+      addPermission: {
+        type: Number,
+        default: null
+      },
+      // 编辑权限
+      editPermission: {
+        type: Number,
+        default: null
+      },
+      // 删除权限
+      delPermission: {
+        type: Number,
+        default: null
       },
       // 获取列表时, 传递的参数
       querys: {
@@ -290,7 +309,15 @@
         this.selectRows = [val]
       },
       handleEdit(row) {
-        this.addAndEdit && this.addAndEdit(row)
+        if (typeof this.addAndEdit === 'function') {
+          this.addAndEdit && this.addAndEdit(row)
+        } else {
+          this.$baseDialog(this.addAndEdit, row ? { edit: row } : {})
+            .then((res) => {
+              this.queryData()
+            })
+            .show()
+        }
       },
       handleDelete(row) {
         let ids = row.id
