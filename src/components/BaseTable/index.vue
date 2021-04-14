@@ -312,7 +312,8 @@
         if (typeof this.addAndEdit === 'function') {
           this.addAndEdit && this.addAndEdit(row)
         } else {
-          this.$baseDialog(this.addAndEdit, row ? { edit: row } : {})
+          this.$baseDialog(this.addAndEdit)
+            .data(row ? { edit: row } : {})
             .then((res) => {
               this.queryData()
             })
