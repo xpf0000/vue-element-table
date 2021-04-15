@@ -214,9 +214,12 @@
     display: flex;
     flex-wrap: wrap;
     height: 0;
-    margin-bottom: 10px;
     overflow: hidden;
     transition: height 0.3s;
+
+    &.active {
+      margin-bottom: 10px;
+    }
 
     .search-item {
       display: flex;
