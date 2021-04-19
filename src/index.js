@@ -9,9 +9,10 @@ import {
 } from './lib/excel/Export2Excel'
 import { export_json_to_json as ExportJsonToTxt } from './lib/excel/Export2JSON'
 
-function install(Vue) {
+function install(Vue, config = {}) {
   if (install.installed) return
   install.installed = true
+  BaseTable.config(config)
   Vue.component('BaseTable', BaseTable)
   Vue.component('TableExportBar', TableExportBar)
   Vue.component('TableSearchBox', TableSearchBox)

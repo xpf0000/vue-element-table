@@ -50,6 +50,7 @@
     </el-row>
     <el-table
       v-loading="listLoading"
+      v-bind="config"
       default-expand-all
       row-key="id"
       :data="showList"
@@ -157,7 +158,15 @@
   import CommonExportBar from '../TableExportBar'
   import SearchBox from '../TableSearchBox'
   import SwitchVal from '../SwitchVal'
+  const BaseConfig = {
+    border: false
+  }
   export default {
+    config(c) {
+      for (let k in c) {
+        BaseConfig[k] = c[k]
+      }
+    },
     components: { SearchBox, CommonExportBar, SwitchVal },
     props: {
       // 显示导出
@@ -245,6 +254,7 @@
     },
     data() {
       return {
+        config: BaseConfig,
         list: [],
         listLoading: true,
         layout: 'total, sizes, prev, pager, next, jumper',
@@ -255,6 +265,7 @@
           pageNo: 1,
           pageSize: 10
         },
+        searchForm: {},
         keyword: '',
         searchShow: false
       }
@@ -297,10 +308,9 @@
     created() {},
     methods: {
       onSearchSubmit(data) {
-        if (data) {
-          data = { ...data, ...this.queryForm }
-        }
-        this.fetchData(data)
+        this.queryForm.pageSize = 1
+        this.searchForm = data
+        this.fetchData()
       },
       setSelectRows(val) {
         this.selectRows = val
@@ -348,9 +358,11 @@
         this.queryForm.pageNo = 1
         this.fetchData()
       },
-      fetchData(form = null) {
+      fetchData() {
         this.listLoading = true
-        this.apiList(form || this.queryForm).then((res) => {
+        let param = Object.assign({}, this.searchForm, this.queryForm)
+        console.log('param: ', param)
+        this.apiList(param).then((res) => {
           console.log('res: ', res)
           let data = res.data
           this.list = data.list

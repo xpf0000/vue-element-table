@@ -203,7 +203,7 @@
         for (let k in this.search) {
           this.$set(this.items, k, this.search[k])
         }
-        this.onSearchSubmit && this.onSearchSubmit(null)
+        this.onSearchSubmit && this.onSearchSubmit({})
       }
     }
   }
