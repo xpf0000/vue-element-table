@@ -308,7 +308,7 @@
     created() {},
     methods: {
       onSearchSubmit(data) {
-        this.queryForm.pageSize = 1
+        this.queryForm.pageNo = 1
         this.searchForm = data
         this.fetchData()
       },

@@ -7,7 +7,8 @@ Vue.use(ElementUI, {
   size: 'small'
 })
 Vue.use(BaseTable, {
-  border: true
+  border: true,
+  stripe: true
 })
 new Vue({
   el: '#app',
