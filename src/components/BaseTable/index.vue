@@ -78,7 +78,15 @@
           :fixed="item.label === '操作' ? 'right' : false"
         >
           <template v-if="!item.prop" v-slot="scope">
-            <slot :name="item.label" :data="scope.row"></slot>
+            <slot
+              :name="item.label"
+              :data="{
+                ...scope.row,
+                $index: scope.$index,
+                $first: scope.$index === 0,
+                $last: scope.$index === list.length - 1
+              }">
+            </slot>
             <template v-if="item.label === '操作'">
               <el-button
                 v-if="
@@ -119,7 +127,7 @@
             </template>
             <template v-else-if="item.type === 'index'">
               {{
-                scope.$index + 1 + (queryForm.pageNo - 1) * queryForm.pageSize
+              scope.$index + 1 + (queryForm.pageNo - 1) * queryForm.pageSize
               }}
             </template>
           </template>
