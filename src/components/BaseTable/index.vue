@@ -324,7 +324,9 @@
         this.selectRows = val
       },
       setSingleRow(val) {
-        this.selectRows = [val]
+        if (this.singleChoose) {
+          this.selectRows = [val]
+        }
       },
       handleEdit(row) {
         if (typeof this.addAndEdit === 'function') {

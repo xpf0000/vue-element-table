@@ -1,6 +1,6 @@
 {
   "name": "@xpf0000/vue-element-table",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "author": "xu pengfei 250881478@qq.com",
   "main": "src/index.js",
   "unpkg": "src/index.js",
